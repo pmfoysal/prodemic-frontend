@@ -1,21 +1,55 @@
 {
-  "name": "persist-ventures-prodemic",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "autoprefixer": "10.4.14",
-    "eslint": "8.40.0",
-    "eslint-config-next": "13.4.1",
-    "next": "13.4.1",
-    "postcss": "8.4.23",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "tailwindcss": "3.3.2"
-  }
+	"name": "persist-ventures-prodemic",
+	"version": "0.1.0",
+	"private": true,
+	"license": "LICENSE",
+	"readme": "README.md",
+	"markdown": "github",
+	"publisher": "@pmfoysal",
+	"description": "Persist Ventures - Prodemic!",
+	"author": {
+		"name": "Foysal Ahmmed",
+		"email": "pmfoysal@gmail.com",
+		"url": "https://github.com/pmfoysal"
+	},
+	"categories": [
+		"Programming Languages",
+		"Data Science",
+		"Education",
+		"Language Packs",
+		"Machine Learning",
+		"Other"
+	],
+	"keywords": [
+		"react.js",
+		"next.js",
+		"redux.js",
+		"blog",
+		"blogs",
+		"cms",
+		"news",
+		"website"
+	],
+	"repository": {
+		"type": "source-code",
+		"url": "https://github.com/pmfoysal/persist-ventures-prodemic"
+	},
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"format": "prettier --write ./**/*.{js,jsx,ts,tsx,json,css,scss}"
+	},
+	"dependencies": {
+		"autoprefixer": "10.4.14",
+		"eslint": "8.40.0",
+		"eslint-config-next": "13.4.1",
+		"next": "13.4.1",
+		"postcss": "8.4.23",
+		"prettier": "^2.8.8",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"tailwindcss": "3.3.2"
+	}
 }
