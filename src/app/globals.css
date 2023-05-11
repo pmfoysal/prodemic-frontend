@@ -35,4 +35,17 @@
 	.header-menus a {
 		@apply text-lg font-medium px-2 py-1 text-slate-600 hover:text-slate-900 cursor-pointer;
 	}
+
+	.footer {
+		@apply bg-white py-4 shadow bg-opacity-80 border-t border-white border-opacity-80;
+		backdrop-filter: blur(1rem);
+	}
+
+	.footer .container {
+		@apply flex items-center justify-center text-center text-slate-600 font-normal;
+	}
+
+	.footer .container a {
+		@apply font-medium text-slate-900 cursor-pointer ml-1 hover:text-blue-500;
+	}
 }
