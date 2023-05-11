@@ -1,6 +1,7 @@
 import './globals.css';
 import meta from '@/assets/meta';
 import Header from '@/components/header';
+import Footer from '@/components/footer';
 import { openSans } from '@/assets/fonts';
 import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
@@ -13,6 +14,7 @@ export default function RootLayout({ children }) {
 			<body className={openSans.className}>
 				<Header />
 				{children}
+				<Footer />
 			</body>
 		</html>
 	);
