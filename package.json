@@ -42,14 +42,17 @@
 		"format": "prettier --write ./**/*.{js,jsx,ts,tsx,json,css,scss}"
 	},
 	"dependencies": {
+		"@uiw/react-md-editor": "^3.6.0",
 		"autoprefixer": "10.4.14",
 		"eslint": "8.40.0",
 		"eslint-config-next": "13.4.1",
 		"next": "13.4.1",
+		"next-remove-imports": "^1.0.11",
 		"postcss": "8.4.23",
 		"prettier": "^2.8.8",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
+		"rehype-sanitize": "^5.0.1",
 		"tailwindcss": "3.3.2"
 	}
 }
