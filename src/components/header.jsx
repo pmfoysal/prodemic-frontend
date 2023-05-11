@@ -2,14 +2,13 @@ import Link from 'next/link';
 
 export default function Header() {
 	return (
-		<header>
-			<main>
-				<nav>
+		<header className='header'>
+			<main className='container'>
+				<nav className='header-brand'>
 					<img src='/logo.png' alt='Prodemic Logo' />
 					<h1>Prodemic</h1>
 				</nav>
-				<nav>
-					<Link href='/'>Home</Link>
+				<nav className='header-menus'>
 					<Link href='/'>About Us</Link>
 					<Link href='/'>Blogs</Link>
 					<Link href='/'>News</Link>
