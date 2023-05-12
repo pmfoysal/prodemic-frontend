@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Preview from './preview';
 import { toast } from 'react-hot-toast';
 import getDate from '@/utilities/getDate';
+import { notFound } from 'next/navigation';
 
 export default function Details({ blog }) {
 	function handleShare() {
@@ -10,6 +11,8 @@ export default function Details({ blog }) {
 			toast.success('Link copied!');
 		});
 	}
+
+	if (!blog?._id) notFound();
 
 	return (
 		<section className='details'>

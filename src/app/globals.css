@@ -117,4 +117,20 @@
 	.preview h6 {
 		border: 0 !important;
 	}
+
+	.not-found {
+		@apply flex items-center justify-center min-h-[calc(100vh_-_130px)];
+	}
+
+	.not-found .container {
+		@apply flex flex-col gap-4 text-center items-center justify-center;
+	}
+
+	.not-found h1 {
+		@apply text-6xl font-bold text-violet-500;
+	}
+
+	.not-found p {
+		@apply text-xl font-medium text-slate-800;
+	}
 }

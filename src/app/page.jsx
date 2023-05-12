@@ -1,4 +1,4 @@
-import getBlog from '@/utilities/api';
+import { getBlog } from '@/utilities/api';
 import Details from '@/components/details';
 
 export async function generateMetadata() {
