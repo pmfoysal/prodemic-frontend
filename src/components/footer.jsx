@@ -6,7 +6,7 @@ export default function Footer() {
 			<main className='container'>
 				&copy; 2023 &bull; Prodemic | All Rights Reserved |{' '}
 				<Link href='https://pmfoysal.netlify.app' target='_blank'>
-					Foysal Ahmmed
+					@pmfoysal
 				</Link>
 			</main>
 		</footer>

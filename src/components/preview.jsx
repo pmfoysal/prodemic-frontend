@@ -6,7 +6,7 @@ const Markdown = dynamic(() => import('@uiw/react-md-editor').then(mod => mod.de
 
 export default function Preview({ source }) {
 	return (
-		<div data-color-mode='light'>
+		<div data-color-mode='light' className='preview'>
 			<Markdown
 				source={source}
 				rehypePlugins={{
