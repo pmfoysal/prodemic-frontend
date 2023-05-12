@@ -3,6 +3,7 @@ import meta from '@/assets/meta';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { openSans } from '@/assets/fonts';
+import Toaster from '@/components/toaster';
 import '@uiw/react-md-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css';
 
@@ -11,10 +12,11 @@ export const metadata = meta;
 export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
-			<body className={`${openSans.className} bg-slate-100`}>
+			<body className={`${openSans.className} bg-slate-100`} suppressHydrationWarning={true}>
 				<Header />
 				{children}
 				<Footer />
+				<Toaster />
 			</body>
 		</html>
 	);
