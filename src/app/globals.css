@@ -118,6 +118,7 @@
 		border: 0 !important;
 	}
 
+	/* Not Found Page Styles */
 	.not-found {
 		@apply flex items-center justify-center min-h-[calc(100vh_-_130px)];
 	}
@@ -132,5 +133,101 @@
 
 	.not-found p {
 		@apply text-xl font-medium text-slate-800;
+	}
+
+	/* Editor Page Styles */
+	.editor {
+		@apply py-8 min-h-screen;
+	}
+
+	.editor .container {
+		@apply bg-white shadow rounded-2xl p-8;
+	}
+
+	.editor-header {
+		@apply flex items-center justify-between mb-10;
+	}
+
+	.editor-header h1 {
+		@apply text-2xl font-bold text-slate-800;
+	}
+
+	.editor-buttons {
+		@apply flex items-center gap-4;
+	}
+
+	.editor-buttons button {
+		@apply bg-slate-900 flex items-center justify-center text-white h-9 w-20 rounded-md hover:opacity-[0.85];
+	}
+
+	.editor-buttons button:nth-child(2) {
+		@apply bg-blue-500;
+	}
+
+	.editor-buttons button svg {
+		@apply h-5 w-auto;
+	}
+
+	.info-inputs {
+		@apply flex flex-col gap-4;
+	}
+
+	.input-group {
+		@apply grid grid-cols-2 gap-4;
+	}
+
+	.input {
+		@apply h-10 w-full rounded-lg bg-slate-50 px-4 text-slate-800 outline-none border border-slate-200 focus:ring-1 ring-slate-400 ring-offset-2 transition;
+	}
+
+	.editor-preview {
+		@apply mt-8;
+	}
+
+	.input-box {
+		@apply relative;
+	}
+
+	.input-icon {
+		@apply absolute top-1/2 -translate-y-1/2 right-2 cursor-pointer;
+	}
+
+	.input-box .input {
+		@apply pr-8;
+	}
+
+	.input-icon svg {
+		@apply h-5 w-auto text-slate-700;
+	}
+
+	.success svg {
+		@apply text-green-500;
+	}
+
+	.error svg {
+		@apply text-red-500;
+	}
+
+	/* Loading Page Styles */
+	.loader {
+		@apply h-screen w-full overflow-hidden fixed top-0 left-0 z-50 bg-white flex items-center justify-center;
+	}
+
+	.loader .content {
+		@apply flex flex-col gap-4 items-center justify-center text-center;
+	}
+
+	.loader h1 {
+		@apply text-2xl font-bold text-slate-800;
+	}
+}
+
+@layer utilities {
+	body {
+		@apply bg-slate-100;
+	}
+
+	button:disabled {
+		@apply opacity-50 cursor-default pointer-events-none;
 	}
 }

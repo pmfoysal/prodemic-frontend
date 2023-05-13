@@ -1,8 +1,8 @@
 import Editor from '@/components/editor';
 import { getBlog } from '@/utilities/api';
 
-export async function generateMetadata() {
-	const blog = await getBlog();
+export async function generateMetadata({ params }) {
+	const blog = await getBlog(params.path);
 	const content = blog?.content || '';
 
 	return {
@@ -11,6 +11,6 @@ export async function generateMetadata() {
 	};
 }
 
-export default async function Page() {
-	return <Editor blog={await getBlog()} />;
+export default async function Page({ params }) {
+	return <Editor blog={await getBlog(params.path)} />;
 }

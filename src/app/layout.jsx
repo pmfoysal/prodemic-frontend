@@ -11,8 +11,8 @@ export const metadata = meta;
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang='en'>
-			<body className={`${openSans.className} bg-slate-100`} suppressHydrationWarning={true}>
+		<html lang='en' data-color-mode='dark'>
+			<body className={openSans.className} suppressHydrationWarning={true}>
 				<Header />
 				{children}
 				<Footer />
