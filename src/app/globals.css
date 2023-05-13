@@ -10,7 +10,7 @@
 
 	/* Header Component Styles */
 	.header {
-		@apply bg-white dark:bg-[#152525] sticky top-0 left-0 w-full py-3 shadow bg-opacity-10 border-b border-white dark:border-[#203030] border-opacity-20 z-10 px-3 sm:px-4 md:px-5 lg:px-6 xl:px-8 2xl:px-0;
+		@apply bg-white dark:bg-[#152525] sticky top-0 left-0 w-full py-3 shadow bg-opacity-10 border-b border-white dark:border-[#203030] border-opacity-20 z-10 section;
 		backdrop-filter: blur(1rem);
 	}
 
@@ -53,12 +53,12 @@
 
 	/* Footer Component Styles */
 	.footer {
-		@apply bg-white dark:bg-[#152525] py-4 shadow bg-opacity-80 border-t border-white dark:border-[#203030] border-opacity-80;
+		@apply bg-white dark:bg-[#152525] py-4 shadow bg-opacity-80 border-t border-white dark:border-[#203030] border-opacity-80 section;
 		backdrop-filter: blur(1rem);
 	}
 
 	.footer .container {
-		@apply flex items-center justify-center text-center text-slate-600 dark:text-slate-300 font-normal text-sm;
+		@apply flex flex-wrap items-center justify-center text-center text-slate-600 dark:text-slate-300 font-normal text-sm;
 	}
 
 	.footer .container a {
@@ -154,15 +154,15 @@
 
 	/* Editor Page Styles */
 	.editor {
-		@apply py-8 min-h-screen;
+		@apply py-8 min-h-screen section;
 	}
 
 	.editor .container {
-		@apply bg-white dark:bg-[#152525] shadow rounded-2xl p-8;
+		@apply bg-white dark:bg-[#152525] shadow rounded-2xl p-6 md:p-8;
 	}
 
 	.editor-header {
-		@apply flex items-center justify-between mb-10;
+		@apply flex flex-wrap gap-4 items-center justify-between mb-10;
 	}
 
 	.editor-header h1 {
@@ -190,7 +190,7 @@
 	}
 
 	.input-group {
-		@apply grid grid-cols-2 gap-4;
+		@apply grid md:grid-cols-2 gap-4;
 	}
 
 	.input {
@@ -266,5 +266,9 @@
 
 	*::-webkit-scrollbar-track {
 		@apply bg-white dark:bg-[#152525];
+	}
+
+	.section {
+		@apply px-3 sm:px-4 md:px-5 lg:px-6 xl:px-8 2xl:px-0;
 	}
 }
