@@ -1,3 +1,4 @@
+import meta from '@/assets/meta';
 import { getBlog } from '@/utilities/api';
 import Details from '@/components/details';
 
@@ -6,7 +7,8 @@ export async function generateMetadata() {
 	const content = blog?.content || '';
 
 	return {
-		title: `Prodemic - ${content?.slice(0, 80)}`,
+		...meta,
+		title: `Prodemic - ${content?.slice(0, 80)}...`,
 		description: content?.slice(0, 200),
 	};
 }
