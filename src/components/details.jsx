@@ -3,10 +3,11 @@ import Link from 'next/link';
 import Preview from './preview';
 import { toast } from 'react-hot-toast';
 import getDate from '@/utilities/getDate';
-import { notFound, useRouter } from 'next/navigation';
+import { notFound, usePathname, useRouter } from 'next/navigation';
 
 export default function Details({ blog }) {
 	const router = useRouter();
+	const pathname = usePathname();
 
 	function handleShare() {
 		navigator.clipboard.writeText(location.href).then(() => {
@@ -15,7 +16,8 @@ export default function Details({ blog }) {
 	}
 
 	function handleEdit() {
-		router.push(location.href + '/editor');
+		if (pathname === '/') router.push('/editor');
+		else router.push(pathname + '/editor');
 	}
 
 	if (!blog?._id) notFound();
