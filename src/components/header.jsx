@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Theme from './theme';
 
 export default function Header() {
 	return (
@@ -9,10 +9,10 @@ export default function Header() {
 					<h1>Prodemic</h1>
 				</nav>
 				<nav className='header-menus'>
-					<Link href='/'>About Us</Link>
-					<Link href='/'>Blogs</Link>
-					<Link href='/'>News</Link>
-					<Link href='/'>Services</Link>
+					<a>Blogs</a>
+					<a>About Us</a>
+					<a>Services</a>
+					<Theme />
 				</nav>
 			</main>
 		</header>
