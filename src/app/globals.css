@@ -67,23 +67,27 @@
 
 	/* Details Page Styles */
 	.details {
-		@apply pb-10 relative pt-[125px] min-h-screen;
+		@apply pb-10 relative pt-[80px] md:pt-[100px] lg:pt-[125px] min-h-screen;
+	}
+
+	.details-page {
+		@apply section;
 	}
 
 	.thumbnail {
-		@apply w-full h-[250px] object-cover fixed top-[77px] z-[1];
+		@apply w-full h-[175px] md:h-[200px] lg:h-[250px] object-cover fixed top-[77px] z-[1];
 	}
 
 	.details .container {
-		@apply z-[2] relative bg-white dark:bg-[#152525] shadow rounded-2xl p-6;
+		@apply z-[2] relative bg-white dark:bg-[#152525] shadow rounded-2xl p-6 md:p-8;
 	}
 
 	.info-area {
-		@apply flex items-center justify-between;
+		@apply flex flex-wrap gap-4 items-center justify-between;
 	}
 
 	.info-left {
-		@apply flex items-center gap-8;
+		@apply flex flex-wrap items-center gap-4 sm:gap-6 md:gap-8;
 	}
 
 	.profile {
