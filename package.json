@@ -1,12 +1,12 @@
 {
-	"name": "persist-ventures-prodemic",
-	"version": "0.1.0",
+	"name": "prodemic-frontend",
+	"version": "1.0.0",
 	"private": true,
 	"license": "LICENSE",
 	"readme": "README.md",
 	"markdown": "github",
 	"publisher": "@pmfoysal",
-	"description": "Persist Ventures - Prodemic!",
+	"description": "Prodemic Website for Persist Ventures - Frontend!",
 	"author": {
 		"name": "Foysal Ahmmed",
 		"email": "pmfoysal@gmail.com",
@@ -32,7 +32,7 @@
 	],
 	"repository": {
 		"type": "source-code",
-		"url": "https://github.com/pmfoysal/persist-ventures-prodemic"
+		"url": "https://github.com/pmfoysal/prodemic-frontend"
 	},
 	"scripts": {
 		"dev": "next dev",
