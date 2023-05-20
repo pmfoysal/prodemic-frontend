@@ -1,13 +1,21 @@
-import db from '@/utilities/database';
+const blogs = `${process.env.SERVER_URL}/api/blogs`;
 
-export async function getBlog(path = '') {
-	const collection = await db();
-	await collection.updateOne({ path }, { $inc: { views: 1 } });
-	const data = await collection.findOne({ path });
-	return JSON.parse(JSON.stringify(data));
+export async function getBlog(path = 'home') {
+	const res = await fetch(`${blogs}/${path}`);
+	return await res.json();
+}
+
+export async function getBlogs() {
+	const res = await fetch(blogs);
+	return await res.json();
+}
+
+export async function editBlog({ path, ...data }) {
+	const res = await fetch(`${blogs}/${path}`, { method: 'PATCH', body: data });
+	return await res.json();
 }
 
 export async function addBlog(data) {
-	const collection = await db();
-	return collection.insertOne(data);
+	const res = await fetch(blogs, { method: 'POST', body: data });
+	return await res.json();
 }
