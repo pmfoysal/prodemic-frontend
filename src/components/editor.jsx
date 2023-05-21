@@ -3,10 +3,10 @@ import Loader from './loader';
 import dynamic from 'next/dynamic';
 import isURL from '@/utilities/isUrl';
 import { toast } from 'react-hot-toast';
-import { getBlog } from '@/utilities/api';
 import isString from '@/utilities/isString';
 import { useRouter } from 'next/navigation';
 import rehypeSanitize from 'rehype-sanitize';
+import { addBlog, getBlog } from '@/utilities/api';
 import { useEffect, useRef, useState } from 'react';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor').then(mod => mod.default), {
@@ -96,12 +96,8 @@ export default function Editor({ blog }) {
 			content: value,
 		};
 		const tId = toast.loading('Publishing...');
-		const res = await fetch('/api/blogs', {
-			method: 'POST',
-			body: JSON.stringify(data),
-		});
-		const newData = await res.json();
-		if (newData?.acknowledged) {
+		const res = await addBlog(data);
+		if (res?.data?.acknowledged) {
 			toast.success('Published!', { id: tId });
 			router.push(`/${path}`);
 		} else {

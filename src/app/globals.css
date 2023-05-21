@@ -252,7 +252,7 @@
 
 	/* Blog List Page Styles */
 	.list-page {
-		@apply py-8 section;
+		@apply py-8 section min-h-screen;
 	}
 
 	.list-page .container {
