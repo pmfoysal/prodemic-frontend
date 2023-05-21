@@ -111,7 +111,7 @@
 	}
 
 	.info-right button {
-		@apply bg-slate-900 dark:bg-white flex items-center justify-center text-white dark:text-slate-900 h-9 w-20 rounded-md hover:opacity-[0.85];
+		@apply bg-slate-900 dark:bg-white flex items-center justify-center text-white dark:text-slate-900 h-9 min-w-[80px] px-4 rounded-md hover:opacity-[0.85];
 	}
 
 	.info-right button svg {
@@ -300,6 +300,10 @@
 @layer utilities {
 	body {
 		@apply bg-slate-100 dark:bg-[#121818];
+	}
+
+	button {
+		@apply text-sm;
 	}
 
 	button:disabled {
