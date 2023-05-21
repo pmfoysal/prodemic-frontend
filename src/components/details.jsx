@@ -23,7 +23,7 @@ export default function Details({ blog }) {
 	}
 
 	async function updateBlog() {
-		await editBlog({ path: blog.path, views: blog.views + 1 });
+		await editBlog(blog.path);
 	}
 
 	if (!blog?._id) notFound();
@@ -44,7 +44,7 @@ export default function Details({ blog }) {
 					<nav className='info-area'>
 						<aside className='info-left'>
 							<Link href={blog.author.url} target='_blank' className='profile'>
-								<img src={blog.author.image} alt='User' className='h-12 w-auto' />
+								<img src={blog.author.image} alt='User' />
 								{blog.author.name}
 							</Link>
 							<div className='date'>

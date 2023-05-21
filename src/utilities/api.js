@@ -1,7 +1,7 @@
 const blogs = `${process.env.SERVER_URL || ''}/api/blogs`;
 
 const cachePolicy = {
-	next: { cache: 'no-store' },
+	next: { cache: 'no-store', revalidate: 0 },
 };
 
 export async function getBlog(path = 'home') {
@@ -14,13 +14,8 @@ export async function getBlogs() {
 	return await res.json();
 }
 
-export async function editBlog({ path, ...data }) {
-	const res = await fetch(`${blogs}/${path}`, {
-		...cachePolicy,
-		method: 'PATCH',
-		body: JSON.stringify(data),
-		headers: { 'Content-Type': 'application/json' },
-	});
+export async function editBlog(path) {
+	const res = await fetch(`${blogs}/${path}`, { ...cachePolicy, method: 'PATCH' });
 	return await res.json();
 }
 

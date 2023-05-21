@@ -95,7 +95,7 @@
 	}
 
 	.profile img {
-		@apply h-9 w-auto object-cover rounded-full;
+		@apply h-12 w-auto aspect-square object-cover rounded-full;
 	}
 
 	.date {

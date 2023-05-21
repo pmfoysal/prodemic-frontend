@@ -6,6 +6,5 @@ export async function GET(request, { params }) {
 }
 
 export async function PATCH(request, { params }) {
-	const body = await request.json();
-	return NextResponse.json(await editBlog({ path: params.path, ...body }));
+	return NextResponse.json(await editBlog(params.path));
 }
