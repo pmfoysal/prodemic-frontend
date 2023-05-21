@@ -1,4 +1,5 @@
 import Theme from './theme';
+import Link from 'next/link';
 
 export default function Header() {
 	return (
@@ -6,12 +7,11 @@ export default function Header() {
 			<main className='container'>
 				<nav className='header-brand'>
 					<img src='/logo.png' alt='Prodemic Logo' />
-					<h1>Prodemic</h1>
+					<h1>World Positive Virus</h1>
 				</nav>
 				<nav className='header-menus'>
-					<a>Blogs</a>
-					<a>About Us</a>
-					<a>Services</a>
+					<Link href='/recents'>Recents</Link>
+					<Link href='/leaderboard'>Leaderboard</Link>
 					<Theme />
 				</nav>
 			</main>

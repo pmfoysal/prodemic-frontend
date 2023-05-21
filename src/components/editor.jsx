@@ -5,8 +5,8 @@ import isURL from '@/utilities/isUrl';
 import { toast } from 'react-hot-toast';
 import isString from '@/utilities/isString';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 import rehypeSanitize from 'rehype-sanitize';
+import { useEffect, useRef, useState } from 'react';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor').then(mod => mod.default), {
 	ssr: false,
@@ -14,7 +14,7 @@ const MDEditor = dynamic(() => import('@uiw/react-md-editor').then(mod => mod.de
 });
 
 export default function Editor({ blog }) {
-	let timeOutId;
+	const timeOutId = useRef();
 	const router = useRouter();
 	const [url, setUrl] = useState('');
 	const [name, setName] = useState('');
@@ -108,14 +108,14 @@ export default function Editor({ blog }) {
 	}
 
 	useEffect(() => {
-		timeOutId = setTimeout(async () => {
-			setAlert({ type: 'loading', title: 'Checking for unique url!' });
+		timeOutId.current = setTimeout(async () => {
+			setAlert({ type: 'loading', title: 'Checking for unique ID!' });
 			const res = await fetch(`/api/blogs?isvalid=${path}`);
 			const data = await res.json();
-			if (data?.isValid) setAlert({ type: 'success', title: 'This unique url is available!' });
-			else setAlert({ type: 'error', title: 'This unique url is available!' });
+			if (data?.isValid) setAlert({ type: 'success', title: 'This unique ID is available!' });
+			else setAlert({ type: 'error', title: 'This unique ID is not available!' });
 		}, 1000);
-		return () => clearTimeout(timeOutId);
+		return () => clearTimeout(timeOutId.current);
 	}, [path]);
 
 	useEffect(() => {
