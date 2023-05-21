@@ -92,6 +92,7 @@ export default function Editor({ blog }) {
 			views: 0,
 			author: { name, image, url },
 			createdAt: new Date().toISOString(),
+			updatedAt: new Date().toISOString(),
 			content: value,
 		};
 		const tId = toast.loading('Publishing...');

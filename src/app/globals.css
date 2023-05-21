@@ -249,6 +249,52 @@
 	.loader h1 {
 		@apply text-2xl font-bold text-slate-800 dark:text-slate-100;
 	}
+
+	/* Blog List Page Styles */
+	.list-page {
+		@apply py-8 section;
+	}
+
+	.list-page .container {
+		@apply flex flex-col gap-4;
+	}
+
+	/* Blog Card Styles */
+	.blog-card {
+		@apply p-4 bg-white dark:bg-[#152525] rounded-xl shadow hover:shadow-md transition;
+	}
+
+	.blog-card .top-area {
+		@apply grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-4 items-center text-sm text-slate-600 dark:text-slate-300;
+	}
+
+	.blog-card .top-area p span {
+		@apply font-medium;
+	}
+
+	.blog-card .top-area > *:last-child {
+		@apply lg:text-right;
+	}
+
+	.blog-card .top-area > *:nth-child(3) {
+		@apply hidden xl:block;
+	}
+
+	.blog-card .user-area {
+		@apply flex items-center gap-2;
+	}
+
+	.blog-card .user-area img {
+		@apply h-8 w-auto aspect-square object-cover rounded-full;
+	}
+
+	.blog-card .user-area h3 {
+		@apply font-medium;
+	}
+
+	.blog-card h1 {
+		@apply font-medium text-slate-800 dark:text-slate-200 leading-tight mt-4 line-clamp-2;
+	}
 }
 
 @layer utilities {
