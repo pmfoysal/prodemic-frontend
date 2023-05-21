@@ -4,8 +4,8 @@ import Details from '@/components/details';
 import { toString } from 'mdast-util-to-string';
 import { fromMarkdown } from 'mdast-util-from-markdown';
 
-export async function generateMetadata({ params }) {
-	const res = await getBlog(params.path);
+export async function generateMetadata() {
+	const res = await getBlog();
 	const content = htmlToText(toString(fromMarkdown(res?.data?.content)), {
 		wordwrap: false,
 		selectors: [{ selector: 'img', format: 'skip' }],
@@ -19,6 +19,6 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Home() {
-	const res = await getBlog(params.path);
+	const res = await getBlog();
 	return <Details blog={res?.data} />;
 }

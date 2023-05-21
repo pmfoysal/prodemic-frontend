@@ -1,8 +1,10 @@
 'use client';
 import Link from 'next/link';
 import Preview from './preview';
+import { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import getDate from '@/utilities/getDate';
+import { editBlog } from '@/utilities/api';
 import { notFound, usePathname, useRouter } from 'next/navigation';
 
 export default function Details({ blog }) {
@@ -20,7 +22,15 @@ export default function Details({ blog }) {
 		else router.push(pathname + '/editor');
 	}
 
+	async function updateBlog() {
+		await editBlog({ path: blog.path, views: blog.views + 1 });
+	}
+
 	if (!blog?._id) notFound();
+
+	useEffect(() => {
+		if (blog?._id) updateBlog();
+	}, []);
 
 	return (
 		<section className='details'>
