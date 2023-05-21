@@ -3,6 +3,7 @@ import Loader from './loader';
 import dynamic from 'next/dynamic';
 import isURL from '@/utilities/isUrl';
 import { toast } from 'react-hot-toast';
+import { getBlog } from '@/utilities/api';
 import isString from '@/utilities/isString';
 import { useRouter } from 'next/navigation';
 import rehypeSanitize from 'rehype-sanitize';
@@ -110,10 +111,10 @@ export default function Editor({ blog }) {
 	useEffect(() => {
 		timeOutId.current = setTimeout(async () => {
 			setAlert({ type: 'loading', title: 'Checking for unique ID!' });
-			const res = await fetch(`/api/blogs?isvalid=${path}`);
-			const data = await res.json();
-			if (data?.isValid) setAlert({ type: 'success', title: 'This unique ID is available!' });
-			else setAlert({ type: 'error', title: 'This unique ID is not available!' });
+			const res = await getBlog(path);
+			if (!res?.data?.path && path.trim().length) {
+				setAlert({ type: 'success', title: 'This unique ID is available!' });
+			} else setAlert({ type: 'error', title: 'This unique ID is not available!' });
 		}, 1000);
 		return () => clearTimeout(timeOutId.current);
 	}, [path]);
@@ -132,7 +133,7 @@ export default function Editor({ blog }) {
 		<section className='editor'>
 			<main className='container'>
 				<div className='editor-header'>
-					<h1>Content Editor</h1>
+					<h1>{name}'s Strain - Editor</h1>
 					<div className='editor-buttons'>
 						<button type='button' title='Cancel' onClick={handleCancel}>
 							<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
@@ -177,7 +178,7 @@ export default function Editor({ blog }) {
 							className='input'
 							placeholder='Your name'
 							value={name}
-							onChange={e => setName(e.target.value)}
+							onChange={e => e.target.value.length < 36 && setName(e.target.value)}
 						/>
 					</div>
 					<div className='input-group'>
@@ -191,7 +192,7 @@ export default function Editor({ blog }) {
 						<input
 							type='url'
 							className='input'
-							placeholder='Your image'
+							placeholder='Your image url'
 							value={image}
 							onChange={e => setImage(e.target.value)}
 						/>
