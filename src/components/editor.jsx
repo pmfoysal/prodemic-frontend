@@ -162,7 +162,7 @@ export default function Editor({ blog }) {
 							<input
 								type='text'
 								className='input'
-								placeholder='Unique url'
+								placeholder='Unique ID'
 								value={path}
 								onChange={e => setPath(getUrl(e.target.value))}
 							/>
@@ -175,7 +175,7 @@ export default function Editor({ blog }) {
 						<input
 							type='text'
 							className='input'
-							placeholder='Author name'
+							placeholder='Your name'
 							value={name}
 							onChange={e => setName(e.target.value)}
 						/>
@@ -184,14 +184,14 @@ export default function Editor({ blog }) {
 						<input
 							type='url'
 							className='input'
-							placeholder='Author website'
+							placeholder='Your website'
 							value={url}
 							onChange={e => setUrl(e.target.value)}
 						/>
 						<input
 							type='url'
 							className='input'
-							placeholder='Author image'
+							placeholder='Your image'
 							value={image}
 							onChange={e => setImage(e.target.value)}
 						/>
