@@ -134,7 +134,7 @@ export default function Editor({ blog }) {
 		<section className='editor'>
 			<main className='container'>
 				<div className='editor-header'>
-					<h1>{name}'s Strain - Editor</h1>
+					<h1>{name}&apos;s Strain - Editor</h1>
 					<div className='editor-buttons'>
 						<button type='button' title='Cancel' onClick={handleCancel}>
 							<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
