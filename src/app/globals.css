@@ -118,8 +118,20 @@
 		@apply h-5 w-auto;
 	}
 
-	.info-right button:nth-child(2) {
+	.info-right > :nth-child(2) button {
 		@apply bg-blue-500 dark:text-white;
+	}
+
+	.share-window {
+		@apply absolute top-full right-0 bg-white dark:bg-[#121818] shadow-lg rounded-xl mt-2 p-2;
+	}
+
+	.share-window .link {
+		@apply py-[5px] px-3 hover:bg-slate-100 dark:hover:bg-[#152525] text-[15px] flex items-center gap-2 text-slate-800 dark:text-slate-200 whitespace-nowrap rounded-md pr-4 cursor-pointer;
+	}
+
+	.share-window .link svg {
+		@apply h-[15px] w-auto text-inherit;
 	}
 
 	.preview {
