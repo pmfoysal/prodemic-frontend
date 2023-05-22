@@ -31,7 +31,7 @@ export default function Details({ blog }) {
 		<section className='details'>
 			<img
 				className='thumbnail'
-				src='https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1920'
+				src='https://raw.githubusercontent.com/pmfoysal/data/main/images/photo-15991.png'
 				alt='Thumbnail'
 			/>
 			<article className='details-page'>
