@@ -6,8 +6,8 @@ import { toast } from 'react-hot-toast';
 import isString from '@/utilities/isString';
 import { useRouter } from 'next/navigation';
 import rehypeSanitize from 'rehype-sanitize';
-import { addBlog, getBlog } from '@/utilities/api';
 import { useEffect, useRef, useState } from 'react';
+import { addBlog, getBlog, uploadImage } from '@/utilities/api';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor').then(mod => mod.default), {
 	ssr: false,
@@ -15,9 +15,11 @@ const MDEditor = dynamic(() => import('@uiw/react-md-editor').then(mod => mod.de
 });
 
 export default function Editor({ blog }) {
+	const tId = useRef();
 	const timeOutId = useRef();
 	const router = useRouter();
 	const [url, setUrl] = useState('');
+	const [file, setFile] = useState();
 	const [name, setName] = useState('');
 	const [path, setPath] = useState('');
 	const [image, setImage] = useState('');
@@ -43,15 +45,15 @@ export default function Editor({ blog }) {
 		),
 		loading: (
 			<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
-				<g fill='none' stroke='currentColor' stroke-linecap='round' stroke-width='2'>
+				<g fill='none' stroke='currentColor' strokeLinecap='round' strokeWidth='2'>
 					<path
-						stroke-dasharray='60'
-						stroke-dashoffset='60'
-						stroke-opacity='.3'
+						strokeDasharray='60'
+						strokeDashoffset='60'
+						strokeOpacity='.3'
 						d='M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z'>
 						<animate fill='freeze' attributeName='stroke-dashoffset' dur='1.3s' values='60;0' />
 					</path>
-					<path stroke-dasharray='15' stroke-dashoffset='15' d='M12 3C16.9706 3 21 7.02944 21 12'>
+					<path strokeDasharray='15' strokeDashoffset='15' d='M12 3C16.9706 3 21 7.02944 21 12'>
 						<animate fill='freeze' attributeName='stroke-dashoffset' dur='0.3s' values='15;0' />
 						<animateTransform
 							attributeName='transform'
@@ -73,12 +75,38 @@ export default function Editor({ blog }) {
 			?.replace(/[^a-z0-9-_]+/g, '');
 	}
 
+	function handleFileSelect() {
+		const input = document.createElement('input');
+		input.type = 'file';
+		input.accept = 'image/*';
+		input.oninput = e => setFile(e.target.files[0]);
+		input.click();
+	}
+
+	function handleFileRemove() {
+		setFile();
+		setImage('');
+	}
+
+	async function handleUpload() {
+		if (image) return image;
+		tId.current = toast.loading('Uploading...');
+		const formData = new FormData();
+		formData.append('file', file);
+		const res = await uploadImage(formData);
+		if (!res?.data?.url) {
+			toast.error(res?.error || 'Something went wrong!', { id: tId.current });
+			return;
+		}
+		setImage(res?.data?.url);
+		return res?.data?.url;
+	}
+
 	function isValid() {
 		const urlOk = isURL(url);
 		const nameOk = isString(name);
-		const imageOk = isURL(image);
 		const valueOk = isString(value);
-		return urlOk && nameOk && imageOk && valueOk;
+		return urlOk && nameOk && valueOk;
 	}
 
 	function handleCancel() {
@@ -87,6 +115,8 @@ export default function Editor({ blog }) {
 
 	async function handleSave() {
 		if (!isValid()) return;
+		const image = await handleUpload();
+		if (!image) return;
 		const data = {
 			path,
 			views: 0,
@@ -95,13 +125,13 @@ export default function Editor({ blog }) {
 			updatedAt: new Date().toISOString(),
 			content: value,
 		};
-		const tId = toast.loading('Publishing...');
+		toast.loading('Publishing...', { id: tId.current });
 		const res = await addBlog(data);
 		if (res?.data?.acknowledged) {
-			toast.success('Published!', { id: tId });
+			toast.success('Published!', { id: tId.current });
 			router.push(`/${path}`);
 		} else {
-			toast.error('Something went wrong!', { id: tId });
+			toast.error(res?.error || 'Something went wrong!', { id: tId.current });
 		}
 	}
 
@@ -141,7 +171,10 @@ export default function Editor({ blog }) {
 							</svg> */}
 							Cancel
 						</button>
-						<button type='button' disabled={alert?.type !== 'success' || !isValid()} onClick={handleSave}>
+						<button
+							type='button'
+							disabled={alert?.type !== 'success' || !isValid() || !(image || file?.name)}
+							onClick={handleSave}>
 							{/* <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
 								<path
 									fill='currentColor'
@@ -184,13 +217,19 @@ export default function Editor({ blog }) {
 							value={url}
 							onChange={e => setUrl(e.target.value)}
 						/>
-						<input
+						<div className='input file'>
+							<p>{file?.name || image || 'No image selected'}</p>
+							<button onClick={file?.name || image ? handleFileRemove : handleFileSelect}>
+								{file?.name || image ? 'Remove Image' : 'Choose Image'}
+							</button>
+						</div>
+						{/* <input
 							type='url'
 							className='input'
 							placeholder='Your image url'
 							value={image}
 							onChange={e => setImage(e.target.value)}
-						/>
+						/> */}
 					</div>
 				</article>
 				<article className='editor-preview'>

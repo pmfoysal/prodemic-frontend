@@ -1,4 +1,5 @@
 const blogs = `${process.env.SERVER_URL || ''}/api/blogs`;
+const images = `${process.env.SERVER_URL || ''}/api/images`;
 
 const cachePolicy = {
 	next: { cache: 'no-store', revalidate: 0 },
@@ -25,6 +26,15 @@ export async function addBlog(data) {
 		method: 'POST',
 		body: JSON.stringify(data),
 		headers: { 'Content-Type': 'application/json' },
+	});
+	return await res.json();
+}
+
+export async function uploadImage(data) {
+	const res = await fetch(images, {
+		...cachePolicy,
+		method: 'POST',
+		body: data,
 	});
 	return await res.json();
 }
