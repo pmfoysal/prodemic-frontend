@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 
 export default function Header() {
 	const path = usePathname();
-	const [isOpen, setIsOpen] = useState('false');
+	const [isOpen, setIsOpen] = useState(false);
 
 	useEffect(() => {
 		setIsOpen(false);
