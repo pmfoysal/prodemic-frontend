@@ -18,6 +18,7 @@ export default function Header() {
 				<nav className='header-brand'>
 					<img src='/logo.png' alt='Prodemic Logo' />
 					<h1>World Positive Virus</h1>
+					<h1 className='mobile'>WPV</h1>
 				</nav>
 				<nav className='header-menus'>
 					<Link href='/recents'>Recents</Link>

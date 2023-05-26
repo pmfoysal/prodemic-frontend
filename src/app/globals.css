@@ -27,7 +27,11 @@
 	}
 
 	.header-brand h1 {
-		@apply text-2xl font-bold text-slate-900 dark:text-slate-50;
+		@apply hidden min-[400px]:block text-2xl font-bold text-slate-900 dark:text-slate-50;
+	}
+
+	.header-brand h1.mobile {
+		@apply block min-[400px]:hidden;
 	}
 
 	.header-menus {
