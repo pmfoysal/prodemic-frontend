@@ -2,11 +2,16 @@
 import Theme from './theme';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function Header() {
+	const router = useRouter();
 	const path = usePathname();
 	const [isOpen, setIsOpen] = useState(false);
+
+	function handleHome() {
+		if (path !== '/') router.push('/');
+	}
 
 	useEffect(() => {
 		setIsOpen(false);
@@ -15,7 +20,7 @@ export default function Header() {
 	return (
 		<header className='header'>
 			<main className='container'>
-				<nav className='header-brand'>
+				<nav className='header-brand' onClick={handleHome}>
 					<img src='/logo.png' alt='Prodemic Logo' />
 					<h1>World Positive Virus</h1>
 					<h1 className='mobile'>WPV</h1>
